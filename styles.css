@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+.quote {
+    padding: 5px;
+    background-color: light-dark(lightgray, darkgray);
+    quoteblock {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    h4 {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+.note {
+    border-style: solid;
+    border: 2px;
+    padding: 5px;
+    background-color: light-dark(lightblue, darkblue);
+}
+:target, :target *{
+    animation: flash-yellow 1.5s;
+}
+
+@keyframes flash-yellow {
+    from { background-color: light-dark(yellow, purple); }
+    to { background-color: inherit; }
+}
