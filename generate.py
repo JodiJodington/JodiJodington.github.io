@@ -5,8 +5,8 @@ def main():
     Path("out/blogs").mkdir(exist_ok=True)
     with open("header.html", "r") as header:
         header_text = header.read()
-        with open("out/home.html", "w") as new:
-            with open("home.html", "r") as old:
+        with open("out/index.html", "w") as new:
+            with open("index.html", "r") as old:
                 new.write(header_text)
                 new.write(old.read())
         with open("out/contact.html", "w") as new:
