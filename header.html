@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <script>
+        let theme = localStorage.getItem('theme');
+        if (theme == null) {
+            theme = "light"
+        }
+        document.documentElement.style.colorScheme = theme;
+    </script>
+</head>
+<style>
+:root {
+    color-scheme: dark;
+}
+.top-links {
+    display: flex;
+    background-color: light-dark(lightpink, darkred);
+    div {
+        margin : 10px;
+    }
+}
+</style>
+<div class="top-links">
+    <div><a href="/">Home</a></div>
+    <div><a href="/contact.html">Contact Me</a></div>
+    <div>
+        <script>
+            function toggleLightDarkMode() {
+                let current_theme = getComputedStyle(document.documentElement).colorScheme;
+                if (current_theme != "dark" && current_theme != "light") {
+                    throw new Error("current_theme has unexpected value");
+                }
+                let new_theme = current_theme == 'dark' ? 'light' : 'dark';
+                document.documentElement.style.colorScheme = new_theme;
+                localStorage.setItem('theme', new_theme);
+            }
+        </script>
+        <button onclick="toggleLightDarkMode()">Toggle Light/Dark Mode</button>
+    </div>
+    <div style="margin-left: auto">Jodi's Site</div>
+</div>
