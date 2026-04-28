@@ -1,12 +1,17 @@
 from pathlib import Path
 import textwrap
 from PIL import Image, ImageDraw, ImageFont
+import shutil
 
 def main():
-    Path("out/").mkdir(exist_ok=True)
-    Path("out/blogs").mkdir(exist_ok=True)
-    Path("out/images").mkdir(exist_ok=True)
-    Path("out/images/blogs").mkdir(exist_ok=True)
+    if Path("out/").exists():
+        shutil.rmtree("out/")
+    Path("out/").mkdir()
+    Path("out/blogs").mkdir()
+    Path("out/images").mkdir()
+    Path("out/images/blogs").mkdir()
+    Path("cache/").mkdir(exist_ok=True)
+    Path("cache/blogs").mkdir(exist_ok=True)
     tail = open("tail.html", "r").read()
     with open("out/index.html", "w") as new:
         with open("index.html", "r") as old:
@@ -43,8 +48,12 @@ def prepareHeaderForFile(file, title):
 
 def getImageUrlForFile(file, text):
     path = f"images/{file}.png"
-    img = generateImageWithText(text)
-    img.save(f"out/{path}")
+    if Path(f"cache/{file}.png").exists():
+        shutil.copy(f"cache/{file}.png", f"out/{path}")
+    else:
+        img = generateImageWithText(text)
+        img.save(f"cache/{file}.png")
+        img.save(f"out/{path}")
     return f"{BASE_URL}/{path}"
 
 def generateImageWithText(text):
