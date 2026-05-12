@@ -1,5 +1,32 @@
-p {
+:root {
     font-family: "sans-serif";
+}
+
+a:link {
+  color: light-dark(darkred, lightcoral);
+}
+
+a:visited {
+  color: light-dark(darkred, lightcoral);
+}
+
+a:hover {
+  color: light-dark(lightcoral, darkred);
+}
+
+a:active {
+  color: light-dark(lightcoral, darkred);
+}
+
+button {
+    border: 2px solid light-dark(darkred, lightcoral);
+    background-color: light-dark(lightcoral, darkred);
+	padding: 0.5em 0.5em;
+	margin: 0.5em 0;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
 }
 
 .quote {
