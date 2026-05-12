@@ -1,3 +1,7 @@
+p {
+    font-family: "sans-serif";
+}
+
 .quote {
     padding: 5px;
     background-color: light-dark(lightgray, darkgray);
